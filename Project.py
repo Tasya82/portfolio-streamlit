@@ -24,10 +24,12 @@ def show_project():
     st.write("Average Satisfaction for Top 10 Highest-Paid Employees: 4.2. This indicates that the top 10 highest-paid employees have relatively high job satisfaction on average.")
     st.write("Average Satisfaction for Other Employees: 3.88. This shows that employees outside the top 10 also report moderate satisfaction but at a slightly lower level than the highest-paid group.")
 
+def Dashboard1():
     st.header("Group by Recruitment Source")
 
     from datetime import datetime
 
+    df_hrd = pd.read_csv('D:\\Data Science\\D40\\HRDataset_v14.csv')
     # Convert 'DateofTermination' and 'DateofHire' columns to datetime
     df_hrd['DateofHire'] = pd.to_datetime(df_hrd['DateofHire'], errors='coerce')  # Convert to datetime
     df_hrd['DateofTermination'] = pd.to_datetime(df_hrd['DateofTermination'], errors='coerce')  # Convert to datetime
@@ -61,7 +63,10 @@ def show_project():
     plt.xticks(rotation=90)
     st.pyplot(plt)
 
+def Prediction1():
     st.header("Does race, ethnicity, or gender affect engagement survey scores, satisfaction, or performance ratings?")
+
+    df_hrd = pd.read_csv('D:\\Data Science\\D40\\HRDataset_v14.csv')
 
     race_stats = df_hrd.groupby('RaceDesc')[['EngagementSurvey', 'EmpSatisfaction', 'PerformanceScore']].agg({'PerformanceScore': lambda x: x.astype(str).replace({'Needs Improvement': 1, 'Fully Meets': 2, 'Exceeds': 3, 'PIP': 1}).astype(int).mean(),'EngagementSurvey':'mean','EmpSatisfaction':'mean'})
     gender_stats = df_hrd.groupby('Sex')[['EngagementSurvey', 'EmpSatisfaction', 'PerformanceScore']].agg({'PerformanceScore': lambda x: x.astype(str).replace({'Needs Improvement': 1, 'Fully Meets': 2, 'Exceeds': 3, 'PIP': 1}).astype(int).mean(),'EngagementSurvey':'mean','EmpSatisfaction':'mean'})
@@ -73,4 +78,19 @@ def show_project():
 
     long_text = 'Race-based findings: American Indian or Alaska Native employees have high performance and satisfaction but lower engagement scores. Hispanic employees have high engagement but report the lowest satisfaction, which might indicate they feel engaged but not completely satisfied with the work environment or company culture. Two or more races employees report the lowest performance, engagement, and slightly above average satisfaction, which suggests they may need additional attention or support. Gender-based findings: No major differences between male and female employees in terms of performance or engagement. However, females report slightly higher job satisfaction. Ethnicity-based findings: Hispanic employees have higher engagement and slightly lower satisfaction than their non-Hispanic counterparts. This suggests the need for deeper investigation into factors affecting satisfaction.'
 
+    st.markdown("**Insight**: " + long_text)
+
+def Prediction2():
+    st.header("Proportion Attrition Based on Job Satisfaction")
+    data1 = pd.read_csv('D:\\Data Science\\project 2\\archive (1)\\train.csv')
+    
+    # Crosstab & heatmap
+    ct = pd.crosstab(data1['Job Satisfaction'], data1['Attrition'], normalize='index')  # normalize biar pakai persentase
+    fig, ax = plt.subplots()
+    sns.heatmap(ct, annot=True, cmap='Blues')
+    plt.title('Proportion Attrition Based on Job Satisfaction')
+    st.pyplot(fig)
+
+    long_text = 'From the results of this heatmap, it can be concluded that: Extreme levels of job satisfaction (both Low and Very High) actually have a high proportion of exits (≥52%). While Medium-High job satisfaction actually has better employee retention. This can show that Very High Satisfaction does not guarantee high loyalty, this can happen because employees are satisfied but have better job opportunities outside (for example, top performer employees). As well as the emergence of feelings of not having enough challenges or progress (bored). Therefore, Low satisfaction is clearly a high risk for resigning.'
+    
     st.markdown("**Insight**: " + long_text)
