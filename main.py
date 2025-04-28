@@ -6,21 +6,21 @@ st.header('Data Scientist')
 
 st.sidebar.title('Navigation')
 
-page = st.sidebar.radio('Choose page', ['About Me', 'Project', 'Contact'])
+page = st.sidebar.radio('Choose page', ['🏠 About Me', '🗃️ Project', '📲 Contact'])
 
-if page == 'About Me':
+if page == '🏠 About Me':
     import About
     About.about_me()
-elif page == 'Contact':
+elif page == '📲 Contact':
     import Contact
     Contact.showing_contact()
-elif page == 'Project':
+elif page == '🗃️ Project':
     import Project
 
-    tab1, tab2, tab3, tab4 = st.tabs(["show_project", "Project Dashboard", "Project Prediction", "Attrition Proportion"])
+    tab1, tab2, tab3, tab4 = st.tabs(["Calculation average job satisfaction", "Project Dashboard", "Project Prediction", "Attrition Proportion"])
 
     with tab1:
-        Project.show_project()
+        Project.Project()
     with tab2:
         Project.Dashboard1()
     with tab3:

@@ -1,7 +1,7 @@
 import streamlit as st
 
 def showing_contact():
-    st.title("Contact")
+    st.subheader("Welcome to Contact Page")
     st.write("Contact me through these links:")
 
     # Define the image URL (replace with your image)

@@ -5,6 +5,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 def show_project():
+    st.subheader("Welcome to Project Page")
+    st.write("These are a few things what I made during the bootcamp")
+
+def Project():
     st.header("Calculation average job satisfaction for top 10 and others")
 
     df_hrd = pd.read_csv('D:\\Data Science\\D40\\HRDataset_v14.csv')
