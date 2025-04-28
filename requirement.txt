@@ -38,7 +38,7 @@ pytz @ file:///C:/Users/dev-admin/perseverance-python-buildout/croot/pytz_172903
 referencing==0.36.2
 requests==2.32.3
 rpds-py==0.23.1
-seaborn @ file:///C:/b/abs_522_0_dy9p/croot/seaborn_1741187268016/work
+seaborn==0.13.2
 setuptools==72.1.0
 six @ file:///tmp/build/80754af9/six_1644875935023/work
 smmap==5.0.2
