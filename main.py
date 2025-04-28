@@ -4,6 +4,11 @@ st.set_page_config(layout='wide')
 st.title('My Portfolio')
 st.header('Data Scientist')
 
+
+# add logo
+with st.sidebar:
+  st.image("https://greatpeopleinside.com/wp-content/uploads/2019/06/analytics-1030x618.jpg", width=2000)
+
 st.sidebar.title('Navigation')
 
 page = st.sidebar.radio('Choose page', ['🏠 About Me', '🗃️ Project', '📲 Contact'])
